@@ -1,0 +1,48 @@
+body {
+    width: 1440px;
+    margin: auto;
+    padding: 0;
+}
+
+.site-header {
+    height: 80px;
+    padding-right: 146px;
+    padding-left: 146px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.site-branding img {
+    width: 216px;
+    height: 14px;
+}
+
+.main-navigation {
+    display: flex;
+    align-items: center;
+}
+
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-navigation li {
+    margin-right: 45px; /* Espace entre les éléments du menu, ajustez selon vos besoins */
+}
+
+.main-navigation a {
+    text-decoration: none;
+    color: #000; 
+    font-weight:lighter;
+    font-size: 16px; /* Taille de la police du menu */
+}
+
+/* Style pour les liens au survol */
+.main-navigation a:hover {
+    font-weight: bold;
+}
