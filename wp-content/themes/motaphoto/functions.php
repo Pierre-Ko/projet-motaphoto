@@ -6,5 +6,6 @@ function theme_enqueue_styles() {
 }
 function register_my_menu() {
     register_nav_menu( 'main-menu', __( 'Menu principal', 'text-domain' ) );
+    register_nav_menu('footer', 'Pied de page');
 }
 add_action( 'after_setup_theme', 'register_my_menu' );
