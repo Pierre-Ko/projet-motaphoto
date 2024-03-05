@@ -1,5 +1,9 @@
 <?php
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+function theme_enqueue_scripts() {
+    // Ajouter jQuery
+    wp_enqueue_script('jquery');
+}
 function theme_enqueue_styles() {
     wp_enqueue_style('monaphoto-style', get_stylesheet_directory_uri() . '/assets/css/style.css');
     wp_enqueue_script( 'monaphoto-scripts', get_stylesheet_directory_uri() . '/assets/js/app.js', array('jquery'), null, true );
