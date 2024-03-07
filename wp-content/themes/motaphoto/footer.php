@@ -7,13 +7,12 @@
             ) );
             ?>
         </nav>
-        
-        <?php wp_footer()?>
-<?php
-
-// Inclure la modale de contact
-get_template_part('assets/template-parts/modal_contact');
-?>  
+    
+        <?php 
+        // Inclure la modale de contact
+        get_template_part('assets/template-parts/modal-contact');
+        wp_footer()?>
+  
 </body>
 
 </html>

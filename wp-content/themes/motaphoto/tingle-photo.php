@@ -1,13 +1,9 @@
 <?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package WordPress
- * @subpackage motaphoto
- * @since motaphoto 1.0
+/*
+ * Template Name: photo
+ * Template Post Type: post, page, product
  */
+defined( 'ABSPATH' ) OR die( 'This script cannot be accessed directly.' );
 
 get_header();
 
