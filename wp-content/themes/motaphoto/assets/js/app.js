@@ -1,57 +1,43 @@
-//test toto//
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the button that opens toto.php
-    var openTotoBtn = document.getElementById('openTotoBtn');
-
-    // Function to open toto.php
-    function openToto() {
-        // Change the URL to the correct path of toto.php
-        window.location.href = '<?php echo get_template_directory_uri(); ?>template-parts/toto.php';
-    }
-
-    // Attach event listener to open toto.php if the button exists
-    if (openTotoBtn) {
-        openTotoBtn.addEventListener('click', openToto);
-    }
-});
-//ouverture modale//
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function() {
     var openModalBtn = document.getElementById('openModalBtn');
-    var modal = document.getElementById('myModal');
-    var closeModalBtn = document.getElementById('closeModalBtn');
+    var modal = document.getElementById('modale');
     var overlay = document.getElementById('overlay');
+    var placementModale = document.getElementById('placement');
+    
+    // Sélectionne le bouton "Contact" du menu
+    var contactButton = document.querySelector('.menu-item-73');
+    // Ajoute un écouteur d'événement sur le clic du bouton "Contact"
+    contactButton.addEventListener('click', function(event) {
+        // Empêche la redirection vers la page de contact
+        event.preventDefault();
 
-    // Fonction pour ouvrir la modale
-    function openModal() {
-        if (modal) {
-            modal.classList.remove('inactive');
-            overlay.classList.remove('inactive');
-        }
-    }
+        // Affiche la modale
+        modal.style.display = 'block';
+    });
 
-    // Fonction pour fermer la modale
-    function closeModal() {
-        if (modal) {
-            modal.classList.add('inactive');
-            overlay.classList.add('inactive');
-        }
-    }
+    openModalBtn.addEventListener('click', function() {
+        modal.style.display = 'block';
+        overlay.classList.add('active');
+        placementModale.style.display = 'block'; // Affiche la modale
+    });
 
-    // Attacher un gestionnaire d'événements au bouton d'ouverture de la modale
-    if (openModalBtn) {
-        openModalBtn.addEventListener('click', openModal);
-    }
+    var closeModalBtn = document.getElementById('closeModalBtn');
+    closeModalBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        overlay.classList.remove('active');
+        placementModale.style.display = 'none'; // Cache la modale
+    });
 
-    // Attacher un gestionnaire d'événements au bouton de fermeture de la modale
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
-    }
-
-    // Fermer la modale lorsque l'overlay est cliqué
-    if (overlay) {
-        overlay.addEventListener('click', closeModal);
-    }
+    // Nouvel événement de clic pour le bouton "Contact" du menu
+    var contactMenuBtn = document.getElementById('menu-item-73');
+    contactMenuBtn.addEventListener('click', function() {
+        // Ouvrir la modale ici
+        modal.style.display = 'block';
+        overlay.classList.add('active');
+        placementModale.style.display = 'block';
+    });
 });
+
 
 
   //test script//

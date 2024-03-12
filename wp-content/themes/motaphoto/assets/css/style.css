@@ -12,6 +12,7 @@
 }
 
 
+
 body {
     width: 1440px;
     margin: auto;
@@ -72,27 +73,63 @@ body {
     border-top-style: solid;
 }
 
- /* Style the modal */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+/* Style pour masquer la modale par défaut */
+#modale {
+    display: none;
 }
-  
-  /* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+
+ /* Style the modal */
+ 
+/* Style pour le fond gris semi-transparent de la page */
+#overlay.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Couleur grise avec opacité */
+    z-index: 100;
+}
+
+/* Style pour la fenêtre modale centrée */
+.placement-modale {
+    display: none;
+    position: fixed;
+    width: 600px;
+    height: 770px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 102;
+    overflow:hidden;
+    border: 5px solid black;
+}
+
+.centrage-contenu-modale {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    overflow:hidden;
+}
+.image-contact {
+    width: 886px;
+    height: 106px;
+    transform: translateX(-20%);
+}
+.image-contact-mobile {
+    display: none; /* Masque l'image pour les écrans plus petits */
+}
+
+/* Media query pour les écrans de taille mobile */
+@media only screen and (max-width: 767px) {
+    .image-contact {
+        display: none; /* Masque l'image pour les écrans plus grands */
+    }
+
+    .image-contact-mobile {
+        display: block; /* Affiche l'image pour les écrans plus petits */
+    }
 }
   
   /* Close Button */
@@ -113,6 +150,8 @@ body {
 /*style formulaire*/
 #wpcf7-f36-o1{
     font-family: poppins;
+    display: flex;
+    justify-content: center;
 }
 .wpcf7-form-control {
     width: 263px;
@@ -123,14 +162,19 @@ body {
 .wpcf7-textarea {
     height: 210px;
 }
+.init{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .wpcf7-submit{
+    display: block;
     font-family: space-mono;
     width: 263px;
     height: 50px;
     padding: 8px 15px 8px 15px;
     border-radius: 2px;
     gap: 10px;
-
 }
 /* ---fiche-photo--- */
 
