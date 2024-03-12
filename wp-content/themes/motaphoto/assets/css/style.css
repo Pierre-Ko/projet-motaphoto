@@ -17,7 +17,7 @@ body {
     width: 1440px;
     margin: auto;
     padding: 0;
-    font-family: space-mono;
+    font-family: 'space-mono';
 }
 
 .site-header {
@@ -27,6 +27,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0px 4px 14px 10px #00000008;
+
 
 }
 
@@ -149,7 +151,7 @@ body {
 
 /*style formulaire*/
 #wpcf7-f36-o1{
-    font-family: poppins;
+    font-family: 'poppins';
     display: flex;
     justify-content: center;
 }
@@ -169,7 +171,7 @@ body {
 }
 .wpcf7-submit{
     display: block;
-    font-family: space-mono;
+    font-family: 'space-mono';
     width: 263px;
     height: 50px;
     padding: 8px 15px 8px 15px;
@@ -177,15 +179,31 @@ body {
     gap: 10px;
 }
 /* ---fiche-photo--- */
-
+.placement-fiche{
+    padding-top: 38px;
+}
 .placement-fiche-photo{
     display: flex;
     justify-content: center;
+    
 }
 .fiche-photo{
     display : flex;
-    flex-direction: column;
-
+    justify-content: space-between;
+    position: relative;
+    /*flex-direction: column;*/
+}
+.fiche-photo:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    border-bottom: 1px solid black;
+}
+.attachment-large{
+    width: auto;
+    height: auto;
 }
 
 .photo_img_mobile{
@@ -196,27 +214,37 @@ body {
 }
 
 .photo-informations {
-    width : 100%;
+    width : auto;
     border : none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-transform: uppercase;
 }
-.photo-informations p,
+.photo-informations h2{
+    font-weight: 400;
+    font-style: italic;
+    font-size: 66px;
+    line-height: 58px;
+    width: 420px;
+}
+/*.photo-informations p,
 .photo-informations h1{
     margin-left: 10%;
     margin-right: 10%;
 }
-.photo-informations h1{
-    font-weight: 400;
-    font-size : 46px;
-}
+
 
 .photo-informations p{
     font-family: 'SpaceMono';
     font-size : 14px;
-}
+}*/
 
 .zone-contact-et-miniature{
+    display: flex;
+    justify-content: space-between;
     width : 100%;
-    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     margin-left : 0%;
     margin-right : 0%;
     margin-top : 15px;
@@ -227,14 +255,14 @@ body {
 
 .zone-contact{
     display : flex;
-    flex-direction : column;
-    align-items: start;
-    margin-left : 14%;
-    margin-right : 14%;
+    font-family: 'poppins';
+    width: 50%;
+    align-self: center;
 }
 
 .zone-contact-position-texte{
     display : flex;
+    width: 100%;
 }
 
 .bouton-contact{
@@ -249,7 +277,7 @@ body {
 }
 
 .zone-miniature{
-    display : none;
+   /* display : none;*/
 }
 
 .attachment-large{

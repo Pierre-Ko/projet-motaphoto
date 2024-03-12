@@ -1,4 +1,5 @@
-<?php
+ <?php
+ //copie single-photo avec inclusion mobile//
 get_header();
 
 while (have_posts()) : the_post();
@@ -12,8 +13,11 @@ while (have_posts()) : the_post();
 
     <div class="placement-fiche">
         <div class="fiche-photo">
+            <div class="photo_img_mobile inactive active-mobile">
+                <?php //echo $thumbnail; ?>
+            </div>
             <div class="photo-informations">
-                <h2><?php echo get_the_title($post_id); ?></h2>
+                <h1><?php echo get_the_title($post_id); ?></h1>
                 <p>référence : <?php echo get_post_meta($post_id, 'reference', true) ? get_post_meta($post_id, 'reference', true) : 'Aucune référence définie pour cet article.'; ?></p>
                 <p>catégorie : <?php echo get_the_terms($post_id, 'categorie') ? get_the_terms($post_id, 'categorie')[0]->name : 'Aucune catégorie définie pour cet article.'; ?></p>
                 <p>format : <?php echo get_the_terms($post_id, 'format') ? get_the_terms($post_id, 'format')[0]->name : 'Aucun format défini pour cet article.'; ?></p>
@@ -62,12 +66,12 @@ while (have_posts()) : the_post();
                     <?php
                         if ($prev_custom_post) {
                             $prev_custom_post_link = get_permalink($prev_custom_post);
-                            echo '<a href="' . esc_url($prev_custom_post_link) . '"><img src="'. get_template_directory_uri() . './assets/images/arrow-left.png" alt="voir la photo précédente" class="arrow-left"/></a>';
+                            echo '<a href="' . esc_url($prev_custom_post_link) . '"><img src="'. get_template_directory_uri() . '/assets/images/arrow-left.png" alt="voir la photo précédente" class="arrow-left"/></a>';
                         }
 
                         if ($next_custom_post) {
                             $next_custom_post_link = get_permalink($next_custom_post);
-                            echo '<a href="' . esc_url($next_custom_post_link) . '"><img src="'. get_template_directory_uri() . './assets/images/arrow-right.png" alt="voir la photo suivante" class="arrow-right"/></a>';
+                            echo '<a href="' . esc_url($next_custom_post_link) . '"><img src="'. get_template_directory_uri() . '/assets/images/arrow-right.png" alt="voir la photo suivante" class="arrow-right"/></a>';
                         }
                     ?>
                 </div>
