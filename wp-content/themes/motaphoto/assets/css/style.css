@@ -14,9 +14,9 @@
 
 
 body {
-    width: 1440px;
+    max-width: 1440px;
     margin: auto;
-    padding: 0;
+    padding:0;
     font-family: 'space-mono';
 }
 
@@ -242,6 +242,7 @@ body {
 
 .zone-contact-et-miniature{
     display: flex;
+    height: 118px;
     justify-content: space-between;
     width : 100%;
     border-bottom: 1px solid black;
@@ -269,6 +270,17 @@ body {
     margin : 0px;
     width : 100%;
 }
+#openModalBtn {
+    width: 272px;
+    height: 50px;
+    border-radius: 2px;
+    Gap:10px;
+    line-height: 18px;
+    border: none;
+    font-family: 'space-mono';
+    font-size: 12px;
+    background: #D8D8D8;
+}
 
 .bouton-contact a{
     margin-left : 0px;
@@ -279,19 +291,50 @@ body {
 .zone-miniature{
    /* display : none;*/
 }
-
+.attachment-thumbnail{
+    width: 81px;
+    height: auto;
+}
+.photo-arrows{
+    display:flex;
+    justify-content: space-between;
+}
 .attachment-large{
+    max-width: 563px;
     width : 100%;
     height : auto; 
 }
 
-.presentation-autres-photos,
-.presentation-images{
+.presentation-autres-photos {
     display : flex;
-    flex-direction : column;
+    flex-direction:column;
     align-items: center;
+    margin-bottom: 109px;
+}
+.presentation-images{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:20px;
+}
+.presentation-images-gauche{
+    width: 564px; /* Largeur fixe du conteneur */
+    height: 495px; /* Hauteur fixe du conteneur */
+    overflow: hidden; /* Masquer ce qui dépasse du conteneur */
+    display: flex; /* Utiliser Flexbox pour centrer l'image */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
 }
 
+.custom-max-width-image {
+    max-width:100%; /* Spécifiez la largeur maximale souhaitée */
+    max-height: 100%; /* Permettez à la hauteur de l'image de s'ajuster automatiquement */
+    width: auto;
+    height: auto;
+}
+.single-photo{
+    width: 1148px;
+}
 .presentation-texte{
     font-size : 18px;
 

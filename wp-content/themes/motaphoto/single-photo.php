@@ -43,7 +43,7 @@ while (have_posts()) : the_post();
                 <p>Cette photo vous intéresse ?</p>
             </div>
             <div class="bouton-contact">
-                <a onClick="passerRef('<?php echo get_post_meta($post_id, 'reference', true); ?>')">Contact</a>
+            <button id="openModalBtn">Contact</button>
             </div>
         </div>
         <div class="zone-miniature">
@@ -58,7 +58,6 @@ while (have_posts()) : the_post();
                     echo $next_post_thumbnail;
                 ?>
                 <div class="photo-arrows">
-                    <p class="get_id"><?php echo $post_id; ?></p>
                     <?php
                         if ($prev_custom_post) {
                             $prev_custom_post_link = get_permalink($prev_custom_post);
@@ -100,8 +99,8 @@ while (have_posts()) : the_post();
                         $query->the_post();
                         $urlrelated = get_the_permalink();
                         echo("<a href='".$urlrelated."' class='presentation-images-gauche'><div >");
-                            $query->the_post_thumbnail();
-                            the_post_thumbnail(); 
+                            // Ajoutez une classe CSS à la balise <img> pour spécifier une largeur maximale
+                            the_post_thumbnail('post-thumbnail', array('class' => 'custom-max-width-image'));
                             // Le contenu de chaque article ici.
                         echo("</div></a>");
                     }
@@ -109,9 +108,7 @@ while (have_posts()) : the_post();
                 }
             ?>
         </div>
-        <div class="presentation-bouton">
-            <a href="/MotaPhoto/"><input class="bouton" type="button" value="Toutes les photos"></a>
-        </div>
+        
     </div>
 
 <?php
