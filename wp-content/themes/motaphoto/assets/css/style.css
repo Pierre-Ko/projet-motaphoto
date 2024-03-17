@@ -11,25 +11,21 @@
     font-style: normal;
 }
 
-
-
 body {
     max-width: 1440px;
     margin: auto;
-    padding:0;
+    padding: 0;
     font-family: 'space-mono';
 }
 
 .site-header {
     height: 80px;
     padding-right: 146px;
-    padding-left: 146px; 
+    padding-left: 146px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 4px 14px 10px #00000008;
-
-
 }
 
 .site-branding img {
@@ -43,6 +39,7 @@ body {
     text-transform: uppercase;
     text-size-adjust: 16px;
     line-height: 24px;
+    z-index: 10000;
 }
 
 .main-navigation ul {
@@ -58,8 +55,8 @@ body {
 
 .main-navigation a {
     text-decoration: none;
-    color: #000; 
-    font-weight:lighter;
+    color: #000;
+    font-weight: lighter;
     font-size: 16px; /* Taille de la police du menu */
 }
 
@@ -73,16 +70,29 @@ body {
     justify-content: center;
     height: 40px;
     border-top-style: solid;
+    margin-top: 109px;
+   
 }
 
-/* Style pour masquer la modale par défaut */
+@media only screen and (max-width: 466px) {
+    #footer-navigation {
+        height: auto;
+        padding-top: 44px;
+        margin-bottom: 44px;
+    }
+    #footer{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+}
+
+/* Style pour la modale */
 #modale {
     display: none;
 }
 
- /* Style the modal */
- 
-/* Style pour le fond gris semi-transparent de la page */
 #overlay.active {
     position: fixed;
     top: 0;
@@ -104,7 +114,7 @@ body {
     transform: translate(-50%, -50%);
     background: #fff;
     z-index: 102;
-    overflow:hidden;
+    overflow: hidden;
     border: 5px solid black;
 }
 
@@ -112,19 +122,21 @@ body {
     display: flex;
     justify-self: center;
     flex-direction: column;
-    overflow:hidden;
+    overflow: hidden;
 }
+
 .image-contact {
     width: 886px;
     height: 106px;
     transform: translateX(-20%);
 }
+
 .image-contact-mobile {
     display: none; /* Masque l'image pour les écrans plus petits */
 }
 
 /* Media query pour les écrans de taille mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 466px) {
     .image-contact {
         display: none; /* Masque l'image pour les écrans plus grands */
     }
@@ -133,15 +145,15 @@ body {
         display: block; /* Affiche l'image pour les écrans plus petits */
     }
 }
-  
-  /* Close Button */
+
+/* Close Button */
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-  
+
 .close:hover,
 .close:focus {
     color: black;
@@ -149,27 +161,31 @@ body {
     cursor: pointer;
 }
 
-/*style formulaire*/
-#wpcf7-f36-o1{
+/* Style pour le formulaire */
+#wpcf7-f36-o1 {
     font-family: 'poppins';
     display: flex;
     justify-content: center;
 }
+
 .wpcf7-form-control {
     width: 263px;
     height: 40px;
     border-radius: 8px;
     border: 1px solid #B8BBC2;
 }
+
 .wpcf7-textarea {
     height: 210px;
 }
-.init{
+
+.init {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.wpcf7-submit{
+
+.wpcf7-submit {
     display: block;
     font-family: 'space-mono';
     width: 263px;
@@ -178,21 +194,23 @@ body {
     border-radius: 2px;
     gap: 10px;
 }
-/* ---fiche-photo--- */
-.placement-fiche{
+
+/* Styles pour la fiche photo */
+.placement-fiche {
     padding-top: 38px;
 }
-.placement-fiche-photo{
+
+.placement-fiche-photo {
     display: flex;
     justify-content: center;
-    
 }
-.fiche-photo{
-    display : flex;
+
+.fiche-photo {
+    display: flex;
     justify-content: space-between;
     position: relative;
-    /*flex-direction: column;*/
 }
+
 .fiche-photo:before {
     content: "";
     position: absolute;
@@ -201,141 +219,240 @@ body {
     width: 50%;
     border-bottom: 1px solid black;
 }
-.attachment-large{
-    width: auto;
+
+.attachment-large {
+    max-width: 563px;
+    width: 100%;
     height: auto;
 }
 
-.photo_img_mobile{
-    display : flex;
+.photo_img_mobile {
+    display: none;
     justify-content: center;
     margin-left: 10%;
     margin-right: 10%;
 }
 
 .photo-informations {
-    width : auto;
-    border : none;
+    width: auto;
+    border: none;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     text-transform: uppercase;
 }
-.photo-informations h2{
+
+.photo-informations h2 {
     font-weight: 400;
     font-style: italic;
     font-size: 66px;
     line-height: 58px;
     width: 420px;
 }
-/*.photo-informations p,
-.photo-informations h1{
-    margin-left: 10%;
-    margin-right: 10%;
-}
 
-
-.photo-informations p{
-    font-family: 'SpaceMono';
-    font-size : 14px;
-}*/
-
-.zone-contact-et-miniature{
+.zone-contact-et-miniature {
     display: flex;
     height: 118px;
     justify-content: space-between;
-    width : 100%;
+    width: 100%;
     border-bottom: 1px solid black;
-    margin-left : 0%;
-    margin-right : 0%;
-    margin-top : 15px;
-    margin-bottom : 15px;
-    padding-top : 10px;
-    padding-bottom : 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.zone-contact{
-    display : flex;
+.zone-contact {
+    display: flex;
     font-family: 'poppins';
     width: 50%;
     align-self: center;
 }
 
-.zone-contact-position-texte{
-    display : flex;
+.zone-contact-position-texte {
+    display: flex;
     width: 100%;
 }
 
-.bouton-contact{
-    margin : 0px;
-    width : 100%;
+.bouton-contact {
+    margin: 0px;
+    width: 100%;
 }
+
 #openModalBtn {
     width: 272px;
     height: 50px;
     border-radius: 2px;
-    Gap:10px;
+    gap: 10px;
     line-height: 18px;
     border: none;
     font-family: 'space-mono';
     font-size: 12px;
     background: #D8D8D8;
 }
-
-.bouton-contact a{
-    margin-left : 0px;
-    width : 100%;
-    height : 70px;
+#openModalBtn:hover {
+    background-color: #000; /* Fond noir au survol */
+    color: #fff; /* Texte blanc au survol */
+    cursor: pointer;
 }
 
-.zone-miniature{
-   /* display : none;*/
+.bouton-contact a {
+    margin-left: 0px;
+    width: 100%;
+    height: 70px;
 }
-.attachment-thumbnail{
+
+.attachment-thumbnail {
     width: 81px;
     height: auto;
 }
-.photo-arrows{
-    display:flex;
+
+.photo-arrows {
+    display: flex;
     justify-content: space-between;
-}
-.attachment-large{
-    max-width: 563px;
-    width : 100%;
-    height : auto; 
 }
 
 .presentation-autres-photos {
-    display : flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 109px;
 }
-.presentation-images{
+
+.presentation-images {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap:20px;
+    gap: 20px;
 }
-.presentation-images-gauche{
+
+.presentation-images-gauche {
     width: 564px; /* Largeur fixe du conteneur */
     height: 495px; /* Hauteur fixe du conteneur */
     overflow: hidden; /* Masquer ce qui dépasse du conteneur */
     display: flex; /* Utiliser Flexbox pour centrer l'image */
     justify-content: center; /* Centrer horizontalement */
     align-items: center; /* Centrer verticalement */
+    position: relative;
 }
 
 .custom-max-width-image {
-    max-width:100%; /* Spécifiez la largeur maximale souhaitée */
+    max-width: 100%; /* Spécifiez la largeur maximale souhaitée */
     max-height: 100%; /* Permettez à la hauteur de l'image de s'ajuster automatiquement */
-    width: auto;
     height: auto;
 }
-.single-photo{
+
+.single-photo {
     width: 1148px;
 }
-.presentation-texte{
-    font-size : 18px;
 
+.presentation-texte {
+    font-size: 18px;
+}
+
+/* Style pour la div contenant l'image */
+.image-container {
+    position: relative;
+}
+
+/* Style pour l'overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Couleur d'arrière-plan semi-transparente */
+    color: #fff; /* Couleur du texte */
+    opacity: 0; /* Initialiser à transparent */
+    transition: opacity 0.3s ease; /* Animation de transition */
+    padding: 20px; /* Espacement intérieur */
+    box-sizing: border-box; /* Inclure le padding dans la taille */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-fullscreen {
+    position: absolute;
+    top: 10px; /* Ajustez selon vos besoins */
+    right: 10px; /* Ajustez selon vos besoins */
+    width: 34px;
+    height: auto;
+}
+
+.icon-eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: auto;
+}
+
+.info-photo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 10px;
+}
+
+/* Style pour les informations supplémentaires à l'intérieur de l'overlay */
+.overlay p {
+    margin: 0;
+}
+
+/* Style pour afficher l'overlay au survol */
+.presentation-images-gauche:hover .overlay {
+    opacity: 1; /* Afficher l'overlay */
+}
+
+@media only screen and (max-width: 466px) {
+    .placement-fiche {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid black;
+    }
+    .fiche-photo:before {
+        display: none;
+    }
+    .fiche-photo {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    .inactive-mobile {
+        display: none;
+    }
+    .active-mobile {
+        display: block;
+        max-width: 563px;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+    }
+    .zone-contact-et-miniature {
+        justify-content: center;
+    }
+    .zone-contact {
+        flex-direction: column;
+        align-self: center;
+        width: auto;
+    }
+    .zone-miniature {
+        display: none;
+    }
+    .presentation-images {
+        flex-direction: column;
+        align-items: center;
+    }
+    .custom-max-width-image {
+        max-width: 100%;
+        max-height: 100%;
+        height: auto;
+    }
 }
