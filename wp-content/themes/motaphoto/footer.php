@@ -7,7 +7,7 @@
             ) );
             ?>
         </nav>
-    
+        <button id="openModalBtn" class="modalnone">Contact</button>
         <?php 
         wp_footer();
         // Inclure la modale de contact

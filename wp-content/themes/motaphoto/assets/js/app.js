@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var placementModale = document.getElementById('placement');
     
     // Sélectionne le bouton "Contact" du menu
-    var contactButton = document.querySelector('.menu-item-73');
+    var contactButton = document.getElementById('menu-item-73');
     // Ajoute un écouteur d'événement sur le clic du bouton "Contact"
     contactButton.addEventListener('click', function(event) {
         // Empêche la redirection vers la page de contact
@@ -69,15 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// filtres page accueil
 
-
-jQuery(document).ready(function($) {
-    // Lorsque l'utilisateur clique sur le bouton du menu burger
-    $('.burger-menu').click(function() {
-        // Basculez la visibilité du menu principal
-        $('#site-navigation').slideToggle();
-        // Basculez la classe .open pour changer l'apparence de l'icône
-        $(this).toggleClass('open');
-    });
-});
-
+//charger plus
