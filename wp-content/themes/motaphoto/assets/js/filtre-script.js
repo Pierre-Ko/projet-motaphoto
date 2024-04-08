@@ -1,52 +1,61 @@
 jQuery(function($) {
+    // Définir un tableau pour stocker les IDs des photos chargées
+    var loadedPhotoIds = [];
+
     // Fonction pour charger plus de photos
     var loadMorePhotos = function() {
         var page = 1; // Commencez à la page 1 pour le chargement initial
-        var canLoadMore = true;
 
-        $('#load-more-photos').on('click', function() {
-            if (canLoadMore) {
-                var format = $('#format-select').val();
-                var categorie = $('#categorie-select').val();
-                var order = $('#order-select').val();
+        // Fonction pour effectuer la requête AJAX
+        var performAjaxRequest = function() {
+            var format = $('#format-select').val();
+            var categorie = $('#categorie-select').val();
+            var order = $('#order-select').val();
 
-                $.ajax({
-                    url: ajax_obj.ajaxurl,
-                    type: 'POST',
-                    data: {
-                        action: 'load_more_photos',
-                        page: page,
-                        format: format,
-                        categorie: categorie,
-                        order: order,
-                        nonce: ajax_params.nonce
-                    },
-                    success: function(response) {
-                        var $response = $(response);
-                        
-                        // Ajouter les classes aux nouvelles photos
-                        $response.find('.photos-container-image').each(function() {
-                            $(this).addClass('image-container');
-                            $(this).addClass('presentation-images-gauche');
-                        });
-                
-                        // Ajouter les classes à l'overlay des nouvelles photos
-                        $response.find('.overlay').addClass('overlay');
-                
-                        $('#photos-container').append($response);
-                        page++;
-                
-                        // Désactiver le bouton "Charger plus" si aucune nouvelle photo n'est chargée
-                        if (response.trim() === '') {
-                            $('#load-more-photos').attr('disabled', 'disabled').text('Plus aucune photo à charger');
-                            canLoadMore = false;
+            $.ajax({
+                url: ajax_obj.ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'load_more_photos',
+                    page: page,
+                    format: format,
+                    categorie: categorie,
+                    order: order,
+                    loaded_photo_ids: loadedPhotoIds.join(','), // Transmettre les IDs des photos déjà chargées
+                    nonce: ajax_params.nonce
+                },
+                success: function(response) {
+                    
+
+                    if (response.success) {
+                        // Vérifier si la réponse contient le contenu attendu
+                        if (response.data && response.data.content) {
+                            // Ajouter le contenu HTML des nouvelles photos au conteneur
+                            $('#photos-container').append(response.data.content);
                         }
+                        
+                        // Mettre à jour les IDs des photos déjà chargées
+                        if (response.data && response.data.references) {
+                            loadedPhotoIds = response.data.references;
+                        }
+                        
+                        page++; // Mettre à jour le numéro de la page
+                    } else {
+                        // Désactiver le bouton "Charger plus" s'il n'y a plus de nouvelles photos
+                        $('#load-more-photos').attr('disabled', 'disabled').text('Plus aucune photo à charger');
                     }
-                });
-                
-                
-            }
-        });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erreur AJAX:', error); // Afficher les erreurs dans la console
+                }
+            });
+        };
+
+        // Attacher l'événement de clic sur le bouton "Charger plus"
+        $('#load-more-photos').on('click', performAjaxRequest);
+
+        // Charger initialement les photos
+        performAjaxRequest();
     };
 
     // Fonction pour filtrer les photos
@@ -55,6 +64,7 @@ jQuery(function($) {
             // Réinitialiser la pagination
             $('#photos-container').empty(); // Supprimez les photos actuelles
             $('#load-more-photos').removeAttr('disabled').text('Charger plus'); // Réactivez le bouton "Charger plus"
+            loadedPhotoIds = []; // Réinitialiser les IDs des photos chargées
             loadMorePhotos(); // Rechargez les photos avec les nouveaux filtres
         });
     };
@@ -63,3 +73,4 @@ jQuery(function($) {
     loadMorePhotos(); // Charger initialement les photos
     filterPhotos(); // Filtrer les photos lorsqu'un filtre est changé
 });
+

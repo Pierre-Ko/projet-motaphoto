@@ -17,6 +17,13 @@ body {
     padding: 0;
     font-family: 'space-mono';
 }
+h3{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    margin-top: 77px;
+    margin-bottom: 52px;
+}
 
 .site-header {
     height: 80px;
@@ -59,6 +66,105 @@ body {
     font-weight: lighter;
     font-size: 16px; /* Taille de la police du menu */
 }
+/*menu-burger*/
+/* Afficher le bouton de menu uniquement sur les appareils mobiles */
+.burger {
+    display: none;
+}
+.nav_burger {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    /* Afficher le bouton de menu sur les appareils mobiles */
+    .burger {
+        display: block;
+        position: relative;
+        padding: 0;
+        width: 45px;
+        height: 45px;
+        right: 15px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    .burger .bar {
+        display: block;
+        width: 45px;
+        height: 4px;
+        border-radius: 3px;
+        background: black;
+        transition: all 0.5s ease-in-out;
+    }
+    
+    .burger .bar::before, .burger .bar::after {
+        content: "";
+        width: 45px;
+        height: 4px;
+        position: absolute;
+        left: 0;
+        background: black;
+        border-radius: 3px;
+        transition: all 0.5s ease-in-out;
+    }
+    
+    .burger .bar::before {
+        transform: translateY(-12px);
+    }
+    
+    .burger .bar::after {
+        transform: translateY(12px);
+    }
+    
+    .burger.open .bar {
+        width: 0;
+        background: transparent;
+    }
+    
+    .burger.open .bar::before {
+        transform: rotate(45deg);
+    }
+    
+    .burger.open .bar::after {
+        transform: rotate(-45deg);
+    }
+      .show-nav .bar {
+        width: 0;
+        background: transparent;
+      }
+      .show-nav .bar::before {
+        transform: rotate(45deg);
+      }
+      .show-nav .bar::after {
+        transform: rotate(-45deg);
+      }
+      .show-nav .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        background: red;
+        left: 0;
+        line-height: 2.5em;
+        z-index: 1;
+        top: 20vh;
+        width: 100vw;
+        height: 100vh;
+        gap: 18px;
+      }
+      .show-nav .navbar a {
+        font-size: 2em;
+        margin-top: 47px;
+        color: white;
+      }
+
+    /* Afficher le menu burger au lieu du menu principal */
+    .menu-header-container {
+        display: none;
+    }
+}
 
 /* Style pour les liens au survol */
 .main-navigation a:hover {
@@ -93,11 +199,13 @@ body {
     display: inline-block;
 }
 #banniere-img {
+    width: 100vw;
     display: block;
     max-width: 1440px;
     height: auto;
 }
 #banniere-title {
+    width: 100vw;
     position: absolute;
     max-width: 1000px;
     height: auto;
@@ -126,6 +234,14 @@ body {
     border: 1.3px solid #B8BBC2;
     padding: 11px 18px 11px 18px;
 }
+.home-filter:hover{
+    border-color: #215AFF;
+}
+/* Style pour les options de sélection */
+
+#categorie-select option:hover{
+    background-color: red !important;
+}
 #photos-container {
     flex-wrap: wrap;
 }
@@ -147,9 +263,9 @@ body {
 
 .photos-container-image img {
     max-width: 900px; /* Largeur maximale */
-    height: auto; /* Hauteur automatique pour conserver les proportions */
+    /*height: auto;  Hauteur automatique pour conserver les proportions */
     object-fit: contain; /* Ajuster l'image pour s'adapter à la largeur maximale */
-    object-position: center; /* Centrer l'image horizontalement et verticalement*/ 
+    /*object-position: center;  Centrer l'image horizontalement et verticalement*/ 
 }
 /*Bouton Charger plus*/
 
@@ -172,6 +288,7 @@ body {
     background-color: #000; /* Fond noir au survol */
     color: #fff; /* Texte blanc au survol */
     cursor: pointer;
+    transition: 0.5s;
 }
 
 /************* Style pour la modale ************/
@@ -388,13 +505,14 @@ body {
     background-color: #000; /* Fond noir au survol */
     color: #fff; /* Texte blanc au survol */
     cursor: pointer;
+    transition: 0.5s;
 }
 
-.bouton-contact a {
+/*.bouton-contact a {
     margin-left: 0px;
     width: 100%;
     height: 70px;
-}
+}*/
 
 .attachment-thumbnail {
     width: 81px;
@@ -420,23 +538,23 @@ body {
 }
 
 .presentation-images-gauche {
-    width: 564px; /* Largeur fixe du conteneur */
-    height: 495px; /* Hauteur fixe du conteneur */
-    overflow: hidden; /* Masquer ce qui dépasse du conteneur */
-    display: flex; /* Utiliser Flexbox pour centrer l'image */
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
+    
+    height: 50vh; 
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
     position: relative;
 }
 
 .custom-max-width-image {
     max-width: 100%; /* Spécifiez la largeur maximale souhaitée */
-    max-height: 100%; /* Permettez à la hauteur de l'image de s'ajuster automatiquement */
+    /*max-height: 100%;  Permettez à la hauteur de l'image de s'ajuster automatiquement */
     height: auto;
 }
 
 .single-photo {
-    width: 1148px;
+    max-width: 1148px;
 }
 
 .presentation-texte {
@@ -503,6 +621,72 @@ body {
     opacity: 1; /* Afficher l'overlay */
 }
 
+/********** lightbox**************/
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 9999; /* Assure que la lightbox est au-dessus de tout le reste */
+    display: none; /* Caché par défaut */
+}
+
+.lightbox-modale {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80vw; /* Largeur maximale */
+    max-height: 80vh; /* Hauteur maximale */
+    z-index: 10000; /* Assure que la lightbox est au-dessus de l'overlay */
+    display: none; /* Caché par défaut */
+}
+
+.lightbox-image {
+    text-align: center; /* Centre la photo */
+}
+
+.lightbox-image img {
+    max-width: 50%; /* Ajuste la taille maximale de l'image à la largeur de la lightbox */
+    height: auto; /* Assure que l'image conserve ses proportions */
+}
+
+.lightbox-infos {
+    display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+
+.lightbox-cross {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    translate: 10vw -8vh;
+}
+
+.lightbox-previous,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.lightbox-previous {
+    left: 10px;
+    translate: -10vw;
+}
+
+.lightbox-next {
+    right: 10px;
+    translate: 10vw;
+}
+
+
 @media only screen and (max-width: 466px) {
     .placement-fiche {
         display: flex;
@@ -523,9 +707,16 @@ body {
     .active-mobile {
         display: block;
         max-width: 563px;
-        width: 100%;
+        width: 80vw;
         height: auto;
         justify-content: center;
+    }
+    .photo-informations{
+        width: 80vw;
+    }
+    .photo-informations h2{
+        font-size: 46px;
+        line-height: 48px;
     }
     .zone-contact-et-miniature {
         justify-content: center;
@@ -541,10 +732,52 @@ body {
     .presentation-images {
         flex-direction: column;
         align-items: center;
+        gap:0;
+    }
+    #photos-container{
+        gap:21px
+
+    }
+    .presentation-images-gauche{
+        height: auto;
+    }
+    .image-container{
+        max-width: 318px;
+        height: 278px;
+    }
+    .photos-container-image img{
+        max-width: 400px;
+        object-fit:contain;
     }
     .custom-max-width-image {
         max-width: 100%;
         max-height: 100%;
         height: auto;
+    }
+    .filters-box{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    .filters-left{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .site-header{
+        padding: 40px;
+        height: 0vh;
+        width: 80vw;
+    }
+    .main-navigation li{
+        display: contents;
+    }
+    h3{
+        text-align: center;
+    }
+    .single-photo img{
+        object-fit:cover;
     }
 }

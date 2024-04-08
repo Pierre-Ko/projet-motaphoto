@@ -76,12 +76,14 @@ while (have_posts()) : the_post();
             </div>
         </div>
     </div>
-
+    <h3>VOUS AIMEREZ AUSSI</h3>
     <div class="presentation-images">
+       
     <?php 
     $args = array(
         'post_type' => 'photo', // Le type de publication personnalisé
         'posts_per_page' => 2, // Récupère tous les articles de cette taxonomie
+        'orderby' => 'rand',
         'tax_query' => array(
             array(
                 'taxonomy' => 'categorie', // récupérer les catégories
@@ -91,30 +93,7 @@ while (have_posts()) : the_post();
         ),
     );
 
-    $query = new WP_Query($args);
-
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            $urlrelated = get_the_permalink();
-            ?>
-            <a href="<?php echo $urlrelated; ?>" class="presentation-images-gauche">
-                <div class="image-container">
-                    <?php the_post_thumbnail('post-thumbnail', array('class' => 'custom-max-width-image')); ?>
-                </div>
-                <div class="overlay">
-                    <img class="icon-fullscreen" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_fullscreen.png" alt="Icon fullscreen">
-                    <img class="icon-eye" src="<?php echo get_template_directory_uri(); ?>/assets/images/eye-icon.png" alt="Eye Icon">
-                    <div class="info-photo">
-                        <p>Référence : <?php echo get_post_meta(get_the_ID(), 'reference', true); ?></p>
-                        <p>Catégorie : <?php echo get_the_terms(get_the_ID(), 'categorie') ? get_the_terms(get_the_ID(), 'categorie')[0]->name : 'Aucune catégorie définie pour cet article.'; ?></p>
-                    </div>
-                </div>
-            </a>
-            <?php
-        }
-        wp_reset_postdata(); // Réinitialise la requête WP_Query.
-    }
+    include(locate_template('assets/template-parts/photo_block.php'));
     ?>
 </div>
     </div>
