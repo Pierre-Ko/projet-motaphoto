@@ -60,7 +60,8 @@ jQuery(function($) {
 
     // Fonction pour filtrer les photos
     var filterPhotos = function() {
-        $('.home-filter').on('change', function() {
+        $('.custom-select .select-items div').on('click', function() {
+            var selectedOption = $(this).html(); // Récupérer la valeur de l'option sélectionnée
             // Réinitialiser la pagination
             $('#photos-container').empty(); // Supprimez les photos actuelles
             $('#load-more-photos').removeAttr('disabled').text('Charger plus'); // Réactivez le bouton "Charger plus"
@@ -68,9 +69,14 @@ jQuery(function($) {
             loadMorePhotos(); // Rechargez les photos avec les nouveaux filtres
         });
     };
+    
+    
+
+    // Appel de la fonction de filtrage au chargement de la page
+    filterPhotos(); // Filtrer les photos lorsqu'un filtre est changé
 
     // Appel de la fonction de chargement initial des photos et de la fonction de filtrage au chargement de la page
     loadMorePhotos(); // Charger initialement les photos
-    filterPhotos(); // Filtrer les photos lorsqu'un filtre est changé
+    
 });
 

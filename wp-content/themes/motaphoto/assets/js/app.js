@@ -1,122 +1,4 @@
-//lightbox
 
-document.addEventListener('DOMContentLoaded', function() {
-    const iconFullscreen = document.querySelectorAll('.icon-fullscreen');
-    if (iconFullscreen) {
-        iconFullscreen.forEach(icon => {
-            icon.addEventListener('click', function(event) {
-                event.preventDefault();
-                const imageUrl = this.getAttribute('data-image-url'); // Récupérer l'URL de l'image à afficher
-                openLightbox(imageUrl);
-            });
-        });
-    }
-
-
-    function openLightbox() {
-        const overlay = document.querySelector('.lightbox-overlay');
-        const modale = document.querySelector('.lightbox-modale');
-        var closeIcon = document.querySelector('.lightbox-cross');
-        var previousButton = document.querySelector('#lightbox-previous');
-        var nextButton = document.querySelector('#lightbox-next');
-    
-        if (overlay && modale && closeIcon && previousButton && nextButton) {
-            overlay.style.display = 'block';
-            modale.style.display = 'block';
-    
-            // Empêcher le lien de rediriger vers la page single-photo
-            event.preventDefault();
-    
-            // Ajoute un gestionnaire d'événement au clic sur l'élément de croix
-            closeIcon.addEventListener('click', function() {
-                // Ferme la lightbox
-                overlay.style.display = 'none';
-                modale.style.display = 'none';
-            });
-    
-            // Gestionnaire d'événement pour le bouton précédent
-            previousButton.addEventListener('click', function() {
-                // Mettez en œuvre la logique pour afficher l'image précédente
-                console.log('Image précédente');
-            });
-    
-            // Gestionnaire d'événement pour le bouton suivant
-            nextButton.addEventListener('click', function() {
-                // Mettez en œuvre la logique pour afficher l'image suivante
-                console.log('Image suivante');
-            });
-        } else {
-            console.error('Certains éléments de la lightbox sont manquants.');
-        }
-    }
-    
-    
-});
-
-//navigation dans la lightbox
-
-function rightLightbox() {
-    // Sélectionner l'image actuellement affichée dans la lightbox
-    var currentImage = document.getElementById('lightbox-info-img');
-    
-    // Récupérer l'URL de l'image actuelle
-    var currentImageUrl = currentImage.src;
-    
-    // Trouver l'index de l'image actuelle dans le tableau de données des photos
-    var currentIndex = dataPhotos.findIndex(function(photo) {
-        return photo.thumbnail === currentImageUrl;
-    });
-    
-    // Vérifier si l'image actuelle est la dernière
-    if (currentIndex === dataPhotos.length - 1) {
-        // Si c'est le cas, revenir au début du tableau
-        currentIndex = 0;
-    } else {
-        // Sinon, passer à l'image suivante
-        currentIndex++;
-    }
-    
-    // Sélectionner l'URL de l'image suivante dans le tableau de données des photos
-    var nextImageUrl = dataPhotos[currentIndex].thumbnail;
-    
-    // Mettre à jour l'attribut src de l'élément img de la lightbox avec l'URL de l'image suivante
-    currentImage.src = nextImageUrl;
-    
-    // Mettre à jour les informations sur la référence et la catégorie de la nouvelle image
-    document.getElementById('lightbox-info-ref').textContent = dataPhotos[currentIndex].reference;
-    document.getElementById('lightbox-info-cat').textContent = dataPhotos[currentIndex].categorie;
-}
-function leftLightbox() {
-    // Sélectionner l'image actuellement affichée dans la lightbox
-    var currentImage = document.getElementById('lightbox-info-img');
-    
-    // Récupérer l'URL de l'image actuelle
-    var currentImageUrl = currentImage.src;
-    
-    // Trouver l'index de l'image actuelle dans le tableau de données des photos
-    var currentIndex = dataPhotos.findIndex(function(photo) {
-        return photo.thumbnail === currentImageUrl;
-    });
-    
-    // Vérifier si l'image actuelle est la première
-    if (currentIndex === 0) {
-        // Si c'est le cas, passer à la dernière image du tableau
-        currentIndex = dataPhotos.length - 1;
-    } else {
-        // Sinon, passer à l'image précédente
-        currentIndex--;
-    }
-    
-    // Sélectionner l'URL de l'image précédente dans le tableau de données des photos
-    var previousImageUrl = dataPhotos[currentIndex].thumbnail;
-    
-    // Mettre à jour l'attribut src de l'élément img de la lightbox avec l'URL de l'image précédente
-    currentImage.src = previousImageUrl;
-    
-    // Mettre à jour les informations sur la référence et la catégorie de la nouvelle image
-    document.getElementById('lightbox-info-ref').textContent = dataPhotos[currentIndex].reference;
-    document.getElementById('lightbox-info-cat').textContent = dataPhotos[currentIndex].categorie;
-}
 
 //Modale contact
 document.addEventListener("DOMContentLoaded", function() {
@@ -204,4 +86,88 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
 });
+
+
+
+//Personalisation des filtres
+
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+
 

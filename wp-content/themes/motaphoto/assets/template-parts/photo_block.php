@@ -10,13 +10,14 @@ if ($query->have_posts()) {
         $reference = get_post_meta(get_the_ID(), 'reference', true); // Récupérer la référence de la photo
         $first_photo_references[] = $reference; // Ajouter la référence au tableau
         $urlrelated = get_the_permalink();
+        $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; // Récupérer l'URL de l'image associée à la publication
         ?>
         <a href="<?php echo $urlrelated; ?>" class="presentation-images-gauche">
             <div class="image-container photos-container-image presentation-images-gauche" data-photo-reference="<?php echo $reference; ?>">
                 <?php the_post_thumbnail('post-thumbnail', array('class' => 'custom-max-width-image')); ?>
             </div>
             <div class="overlay">
-                <img id="fullscreen-icon" class="icon-fullscreen custom-fullscreen-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_fullscreen.png" alt="Icon fullscreen"data-image-url="<?php echo $reference; ?>">
+                <img id="fullscreen-icon" class="icon-fullscreen custom-fullscreen-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_fullscreen.png" alt="Icon fullscreen"data-image-url="<?php echo $image_url; ?>">
                 <img class="icon-eye" src="<?php echo get_template_directory_uri(); ?>/assets/images/eye-icon.png" alt="Eye Icon">
                 <div class="info-photo">
                     <p>Référence : <?php echo $reference; ?></p>

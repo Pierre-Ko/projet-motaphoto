@@ -13,7 +13,8 @@
         <div class="filters-left">
         
             <!-- Filtre catégorie -->
-            <select id="categorie-select" class="home-filter" onfocus="this.size=10;" onblur="this.size=0;" onchange="this.size=1;this.blur()">
+            <div class="custom-select">
+            <select id="categorie-select" class="home-filter">
                 <option value="all">Catégories</option>
                 <?php
                     // Récupérer tous les termes de la taxonomie catégorie
@@ -29,9 +30,11 @@
                  }
                 ?>
             </select>
+            </div>
 
             <!-- Filtre format -->
-            <select id="format-select" class="home-filter">
+            <div class="custom-select">
+            <select id="format-select" class="home-filter" >
                 <option value="all">Formats</option>
                 <?php
                     // Récupérer tous les termes de la taxonomie format
@@ -47,14 +50,17 @@
                  }
                 ?>
             </select>
+            </div>
         </div>
 
         <!-- Filtre tri par date -->
+        <div class="custom-select">
         <select id="order-select" class="home-filter">
             <option value="ASC">Trier par</option>
             <option value="ASC">Date - Ordre croissant</option>
             <option value="DESC">Date - Ordre décroissant</option>
         </select>
+        </div>
     </div>
 </div>
 
