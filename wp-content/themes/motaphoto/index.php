@@ -1,8 +1,8 @@
 <?php get_header() ?>
 <!-- hero -->
 <div class="banniere-img">
-    <!--consignes différentes entre le document spécifications fonctionnelles et le doc les Etapes clés p11 qui demande un RANDOM. j'ai fais le choix de prendre la consigne donné par la cliente dans les spécifications fonctionnelles du site-->
-    <img id="banniere-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/nathalie-11.jpeg" alt="Photo bannière">
+    <?php $random_image_url = get_random_portrait_image_url(); ?>
+    <img id="banniere-img" src="<?php echo $random_image_url; ?>" alt="Photo bannière">
     <img id="banniere-title" src="<?php echo get_template_directory_uri(); ?>/assets/images/titre-hero.png" alt="Titre bannière">
 </div>
 

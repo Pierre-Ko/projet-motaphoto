@@ -209,3 +209,36 @@ function filter_photos() {
 add_action('wp_ajax_filter_photos', 'filter_photos'); // Pour les utilisateurs connectés
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos'); // Pour les utilisateurs non connectés
 
+//images bannière
+function get_random_portrait_image_url() {
+    // Arguments de la requête pour récupérer une image aléatoire de format portrait
+    $args = array(
+        'post_type' => 'photo', // Remplacez 'photo' par le nom de votre type de publication personnalisé
+        'posts_per_page' => 1,
+        'orderby' => 'rand',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'format', // Remplacez 'format' par le nom de votre taxonomie pour les formats
+                'field' => 'slug',
+                'terms' => 'paysage',
+            ),
+        ),
+    );
+
+    // Exécutez la requête
+    $query = new WP_Query($args);
+
+    // Vérifiez si des publications ont été trouvées
+    if ($query->have_posts()) {
+        // Récupérez l'URL de l'image en vedette de la première publication
+        $query->the_post();
+        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+        
+        // Réinitialisez la requête pour éviter d'interférer avec d'autres requêtes ultérieures
+        wp_reset_postdata();
+        
+        return $image_url;
+    } else {
+        return false; // Retourne false si aucune image n'est trouvée
+    }
+}
