@@ -10,7 +10,7 @@ if ($query->have_posts()) {
         $reference = get_post_meta(get_the_ID(), 'reference', true); // Récupérer la référence de la photo
         $first_photo_references[] = $reference; // Ajouter la référence au tableau
         $urlrelated = get_the_permalink();
-        $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; // Récupérer l'URL de l'image associée à la publication
+        $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'medium')[0]; // Récupérer l'URL de l'image associée à la publication
         ?>
         <a href="<?php echo $urlrelated; ?>" class="presentation-images-gauche">
             <div class="image-container photos-container-image presentation-images-gauche" data-photo-reference="<?php echo $reference; ?>">

@@ -15,13 +15,19 @@ function openLightbox(imageUrl) {
     var closeIcon = document.querySelector('.lightbox-cross');
     var previousButton = document.querySelector('#lightbox-previous');
     var nextButton = document.querySelector('#lightbox-next');
-
+    
     if (overlay && modale && closeIcon && previousButton && nextButton) {
         overlay.style.display = 'block';
         modale.style.display = 'block';
 
         // Modifier l'attribut src de l'élément img de la lightbox avec l'URL de l'image
         document.getElementById('lightbox-info-img').src = imageUrl;
+        // Mettre à jour les informations sur la référence et la catégorie
+        var currentIndex = dataPhotos.findIndex(function(photo) {
+            return photo.thumbnail === imageUrl;
+        });
+        document.getElementById('lightbox-info-ref').textContent = dataPhotos[currentIndex].reference;
+        document.getElementById('lightbox-info-cat').textContent = dataPhotos[currentIndex].categorie;
 
         // Empêcher le lien de rediriger vers la page single-photo
         event.preventDefault();

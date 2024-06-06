@@ -33,6 +33,7 @@
             //on passe le tableau à javascript
             let dataPhotos = <?php echo json_encode($photo_objects); ?>;
             
+
 </script>
 
 <?php 
