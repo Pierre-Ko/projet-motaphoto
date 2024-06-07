@@ -21,16 +21,20 @@ function openLightbox(imageUrl) {
         modale.style.display = 'block';
 
         // Modifier l'attribut src de l'élément img de la lightbox avec l'URL de l'image
-        document.getElementById('lightbox-info-img').src = imageUrl;
+        const lightboxImage = document.getElementById('lightbox-info-img');
+        lightboxImage.src = imageUrl;
+
+        // Empêcher le lien de rediriger vers la page single-photo
+        event.preventDefault();
+
         // Mettre à jour les informations sur la référence et la catégorie
         var currentIndex = dataPhotos.findIndex(function(photo) {
             return photo.thumbnail === imageUrl;
         });
-        document.getElementById('lightbox-info-ref').textContent = dataPhotos[currentIndex].reference;
-        document.getElementById('lightbox-info-cat').textContent = dataPhotos[currentIndex].categorie;
-
-        // Empêcher le lien de rediriger vers la page single-photo
-        event.preventDefault();
+        if (currentIndex !== -1) {
+            document.getElementById('lightbox-info-ref').textContent = dataPhotos[currentIndex].reference;
+            document.getElementById('lightbox-info-cat').textContent = dataPhotos[currentIndex].categorie;
+        }
 
         // Ajoute un gestionnaire d'événement au clic sur l'élément de croix
         closeIcon.addEventListener('click', function() {
@@ -42,9 +46,6 @@ function openLightbox(imageUrl) {
         console.error('Certains éléments de la lightbox sont manquants.');
     }
 }
-
-
-    
     
     
 
@@ -82,6 +83,7 @@ function rightLightbox() {
     document.getElementById('lightbox-info-ref').textContent = dataPhotos[currentIndex].reference;
     document.getElementById('lightbox-info-cat').textContent = dataPhotos[currentIndex].categorie;
 }
+
 function leftLightbox() {
     // Sélectionner l'image actuellement affichée dans la lightbox
     var currentImage = document.getElementById('lightbox-info-img');
@@ -113,5 +115,3 @@ function leftLightbox() {
     document.getElementById('lightbox-info-ref').textContent = dataPhotos[currentIndex].reference;
     document.getElementById('lightbox-info-cat').textContent = dataPhotos[currentIndex].categorie;
 }
-
-

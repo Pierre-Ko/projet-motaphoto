@@ -2,14 +2,77 @@
 # This file is distributed under the same license as the Plugins - Custom Post Type UI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-02-03 00:40:44+0000\n"
+"PO-Revision-Date: 2024-05-03 13:56:37+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: GlotPress/4.0.0-beta.2\n"
+"X-Generator: GlotPress/4.0.1\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Custom Post Type UI - Stable (latest release)\n"
+
+#: inc/utility.php:1050
+msgid "Cancel"
+msgstr "Annuler"
+
+#: inc/utility.php:1038 inc/utility.php:1049
+msgid "OK"
+msgstr "Ok"
+
+#: inc/about.php:105
+msgid "The move to require WordPress 6.3 allowed for adding \"item_trashed\" label support."
+msgstr "La décision d’exiger WordPress 6.3 a permis d’ajouter la prise en charge du libellé « item_trashed »."
+
+#: inc/about.php:104
+msgid "Moved to minimum of WordPress 6.3."
+msgstr "Déplacé vers WordPress 6.3 minimum."
+
+#: inc/about.php:103
+msgid "If you are trying to move post types into CPTUI, you can now mark as such to prevent slug conflicts notices."
+msgstr "Si vous essayez de déplacer des types de publication vers CPTUI, vous pouvez désormais les marquer comme tels pour éviter les notifications de conflits de slug."
+
+#: inc/about.php:102
+msgid "Post type migration support"
+msgstr "Prise en charge de la migration de type de publication"
+
+#: inc/post-types.php:1219
+msgid "\"False\" behaves like posts, \"True\" behaves like pages."
+msgstr "« Faux » se comporte comme des articles, « Vrai » se comporte comme des pages."
+
+#. translators: Used for autofill
+#: inc/post-types.php:875
+msgid "%s trashed."
+msgstr "%s mis à la corbeille."
+
+#: inc/post-types.php:872
+msgid "(e.g. Movie trashed.)"
+msgstr "(ex. : film mis à la corbeille.)"
+
+#: inc/post-types.php:867
+msgid "Used when an item is moved to Trash. Default \"Post trashed.\" / \"Page trashed.\""
+msgstr "Utilisé lorsqu’un élément est déplacé vers la corbeille. Par défaut, « Publication mise à la corbeille. » / « Page mise à la corbeille. »"
+
+#: inc/post-types.php:866
+msgid "Item Trashed"
+msgstr "Élément mis à la corbeille"
+
+#: inc/post-types.php:334
+msgid "I'm trying to migrate things in to CPTUI, let me save this"
+msgstr "J’essaie de migrer des éléments vers CPTUI, permettez-moi d’enregistrer ce"
+
+#. translators: Placeholders are just for HTML markup that doesn't need
+#. translated
+#: inc/support.php:200
+msgid "You will need to add your newly created post type to the types that the category and tag archives query for. You can see a tutorial on how to do that at %s. You can also get this functionality via UI with a purchase of CPTUI-Extended"
+msgstr "Vous devrez ajouter votre type de publication nouvellement créé aux types recherchés par les archives de catégories et d’étiquettes. Vous pouvez voir un tutoriel sur la façon de procéder sur %s. Vous pouvez également obtenir cette fonction via l’UI en achetant CPTUI-Extended."
+
+#: inc/post-types.php:272 inc/taxonomies.php:277
+msgid "Slugs may only contain lowercase alphanumeric characters, dashes, and underscores."
+msgstr "Les slugs peuvent uniquement contenir des caractères alphanumériques minuscules, des tirets et des tirets bas."
+
+#: custom-post-type-ui.php:1126
+msgid "Back to top"
+msgstr "Retour en haut"
 
 #: custom-post-type-ui.php:847
 msgid "Secondary menu"
@@ -55,6 +118,10 @@ msgstr "Si les termes de cette taxonomie doivent être triés dans l’ordre où
 msgid "Sort"
 msgstr "Trier"
 
+#: inc/taxonomies.php:939
+msgid "(default: false) Whether the taxonomy can have parent-child relationships. \"True\" gives checkboxes, \"False\" gives text input."
+msgstr "(par défaut : Faux) Si la taxonomie peut avoir des relations parent-enfant. « Vrai » donne des cases à cocher, « Faux » donne des champs de saisie textuels."
+
 #. translators: Used for autofill
 #: inc/taxonomies.php:842
 msgid "The description is not prominent by default; however, some themes may show it."
@@ -67,6 +134,10 @@ msgstr "Description pour le champ « Description » sur l’écran de modifica
 #: inc/taxonomies.php:838
 msgid "Term Description Field Description"
 msgstr "Description du champ « Description du terme »"
+
+#: inc/taxonomies.php:837
+msgid "(e.g. \"The description is not prominent by default; however, some themes may show it.\""
+msgstr "(ex. : « La description n’est pas visible par défaut, cependant, certains thèmes peuvent l’afficher. »"
 
 #. translators: Used for autofill
 #: inc/taxonomies.php:826
@@ -81,6 +152,10 @@ msgstr "Description du champ « Slug » sur l’écran de modification des ét
 msgid "Term Slug Field Description"
 msgstr "Description du champ « Slug du terme »"
 
+#: inc/taxonomies.php:821
+msgid "(e.g. \"The « slug » is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.\""
+msgstr "(ex. : « l’identifiant d’URL est une version du nom compatible avec les URL. Il est généralement entièrement en minuscules et ne contient que des lettres, chiffres et tirets. »)"
+
 #. translators: Used for autofill
 #: inc/taxonomies.php:810
 msgid "Assign a parent term to create a hierarchy. The term Jazz, for example, would be the parent of Bebop and Big Band."
@@ -93,6 +168,10 @@ msgstr "Description pour le champ parent sur l’écran de modification des éti
 #: inc/taxonomies.php:806
 msgid "Term Parent Field Description"
 msgstr "Description du champ « Terme parent »"
+
+#: inc/taxonomies.php:805
+msgid "(e.g. \"Assign a parent term to create a hierarchy. The term Jazz, for example, would be the parent of Bebop and Big Band.\""
+msgstr "(ex. : « assigner un terme parent pour créer une hiérarchie. Le terme Jazz, par exemple, serait le parent de Bebop et Big Band. »)"
 
 #. translators: Used for autofill
 #: inc/taxonomies.php:794
@@ -111,6 +190,10 @@ msgstr "Description du champ « Nom de terme »"
 msgid "(e.g. \"The name is how it appears on your site.\""
 msgstr "(ex. : « Le nom tel qu’il apparaîtra sur votre site. »"
 
+#: inc/support.php:223
+msgid "If you have set \"exclude from search\" to True for the pot type, this would be why. If you need the post types in the archives, but still want to exclude them from search, it is recommended to use the \"pre_get_posts\" hook to unset the post type from considered types."
+msgstr "Si vous avez défini « exclure de la recherche » sur Vrai pour le type de publication, voici pourquoi. Si vous avez besoin des types de publication dans les archives, mais que vous souhaitez tout de même les exclure de la recherche, il est recommandé d’utiliser le crochet Web « pre_get_posts » pour supprimer le type de publication des types considérés."
+
 #: inc/support.php:220
 msgid "Why are my post types not showing in taxonomy term archives?"
 msgstr "Pourquoi mes types de publication ne s’affichent-ils pas dans les archives des termes de taxonomie ?"
@@ -122,6 +205,10 @@ msgstr "(par défaut : vrai) Ce type de publication peut être exporté."
 #: inc/post-types.php:1270
 msgid "Can Export"
 msgstr "Peut exporter"
+
+#: inc/post-types.php:1202
+msgid "(default: false) Whether or not to exclude posts with this post type from front end search results. This also excludes from taxonomy term archives."
+msgstr "(par défaut : Faux) S’il faut exclure ou non les publications avec ce type de publication des résultats de recherche du site en ligne. Cela les exclut également des archives de termes de la taxonomie."
 
 #. translators: Used for autofill
 #: inc/post-types.php:923
@@ -465,7 +552,7 @@ msgstr "Remplir les libellés manquants en fonction des libellés choisis"
 msgid "Populate additional labels based on chosen labels"
 msgstr "Remplir les libellés supplémentaires en fonction des libellés choisis"
 
-#: inc/taxonomies.php:66
+#: inc/taxonomies.php:66 inc/utility.php:1037
 msgid "Please select a post type to associate with."
 msgstr "Veuillez sélectionner un type de publication à associer."
 
@@ -1193,7 +1280,7 @@ msgstr "Configuration par défaut"
 msgid "View Post Types"
 msgstr "Voir les types de publication"
 
-#: inc/post-types.php:62 inc/taxonomies.php:65
+#: inc/post-types.php:62 inc/taxonomies.php:65 inc/utility.php:1047
 msgid "Are you sure you want to delete this? Deleting will NOT remove created content."
 msgstr "Confirmez-vous vouloir supprimer cet élément ? La suppression ne retire pas le contenu créé."
 
@@ -1305,14 +1392,22 @@ msgid "If you have sought support for Custom Post Type UI on the forums, you may
 msgstr "Si vous avez sollicité le support pour Custom Post Type UI sur les forums, il se peut qu’on vous demande d’envoyer les informations ci-dessous au développeur de l’extension. Insérez simplement l’e-mail qu’ils ont fourni dans le champ de saisie en bas et cliquez sur le bouton « Envoyer les infos de débogage ». Seules les données ci-dessous leur seront envoyées."
 
 #. Author URI of the plugin
+#: custom-post-type-ui.php
 msgid "https://webdevstudios.com/"
 msgstr "https://webdevstudios.com/"
 
 #. Author of the plugin
+#: custom-post-type-ui.php
 msgid "WebDevStudios"
 msgstr "WebDevStudios"
 
+#. Description of the plugin
+#: custom-post-type-ui.php
+msgid "Admin UI panel for registering custom post types and taxonomies"
+msgstr "Panneau d’administration UI pour enregistrer de types de publication personnalisés et taxonomies"
+
 #. Plugin URI of the plugin
+#: custom-post-type-ui.php
 msgid "https://github.com/WebDevStudios/custom-post-type-ui/"
 msgstr "https://github.com/WebDevStudios/custom-post-type-ui/"
 
@@ -2207,7 +2302,8 @@ msgstr "Suivre sur Twitter :"
 #. plugin and a link to WebdevStudios.
 #. translators: Placeholders are just for HTML markup that doesn't need
 #. translated.
-#: inc/about.php:64 inc/utility.php:113 inc/utility.php:131
+#: custom-post-type-ui.php inc/about.php:64 inc/utility.php:113
+#: inc/utility.php:131
 msgid "Custom Post Type UI"
 msgstr "Custom Post Type UI"
 
